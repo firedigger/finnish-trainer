@@ -1,0 +1,241 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  padding: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+h2 strong {
+  color: #3498db;
+  font-weight: 700;
+}
+
+.results {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.score-display {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.score-display h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.perfect-score {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.good-score {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ok-score {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.needs-improvement {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.row.correct {
+  background-color: rgba(46, 204, 113, 0.1);
+  border-left: 4px solid #2ecc71;
+}
+
+.row.incorrect {
+  background-color: rgba(231, 76, 60, 0.1);
+  border-left: 4px solid #e74c3c;
+}
+
+.pronoun {
+  width: 80px;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  color: #2c3e50;
+  text-align: right;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+input[type="text"] {
+  width: 250px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+input[type="text"]:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+input[type="text"].correct-input {
+  border-color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.05);
+}
+
+input[type="text"].incorrect-input {
+  border-color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+.pronoun-en {
+  color: #888;
+  font-size: 0.9em;
+  margin-right: 0.5rem;
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.correct-mark {
+  color: #2ecc71;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.incorrect-mark {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.expected-answer {
+  color: #e74c3c;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+button[type="submit"]:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button[type="submit"].loading {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .pronoun {
+    margin-bottom: 0.5rem;
+    width: auto;
+    text-align: left;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feedback {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}

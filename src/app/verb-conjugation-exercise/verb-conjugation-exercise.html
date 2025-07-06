@@ -1,0 +1,72 @@
+<section class="container">
+    <h2>Conjugate the verb: <strong>{{ verb() }}</strong></h2>
+    
+    @if (isSubmitted()) {
+        <div class="results">
+            <div class="score-display">
+                <h3>Your Score: {{ score() }}%</h3>
+                @if (score() === 100) {
+                    <div class="perfect-score">🎉 Perfect! Well done!</div>
+                } @else if (score() >= 80) {
+                    <div class="good-score">👍 Good job!</div>
+                } @else if (score() >= 60) {
+                    <div class="ok-score">😊 Keep practicing!</div>
+                } @else {
+                    <div class="needs-improvement">📚 More practice needed</div>
+                }
+            </div>
+        </div>
+    }
+    
+    <form>
+        @for (pronoun of pronouns; track pronoun; let i = $index) {
+        <div class="row" [class.correct]="isSubmitted() && validationResults()[i].correct" 
+             [class.incorrect]="isSubmitted() && !validationResults()[i].correct">
+            <label for="input-{{ i }}" class="pronoun">{{ pronoun.fi }}</label>
+            <input 
+                #input
+                id="input-{{ i }}"
+                type="text" 
+                autocomplete="off"
+                [value]="answers()[i]"
+                (input)="onAnswerChange(i, input.value)"
+                [disabled]="isSubmitted()"
+                [class.correct-input]="isSubmitted() && validationResults()[i].correct"
+                [class.incorrect-input]="isSubmitted() && !validationResults()[i].correct"
+            />
+            
+            @if (isSubmitted()) {
+                <div class="feedback">
+                    @if (validationResults()[i].correct) {
+                        <span class="correct-mark">✓</span>
+                    } @else {
+                        <span class="incorrect-mark">✗</span>
+                        <span class="expected-answer">Expected: {{ validationResults()[i].expected }}</span>
+                    }
+                </div>
+            }
+        </div>
+        }
+        
+        <div class="form-actions">
+            @if (!isSubmitted()) {
+                <button 
+                    (click)="onSubmit()"
+                    type="button" 
+                    [disabled]="!isFormComplete()"
+                    [class.loading]="isLoading()"
+                >
+                    @if (isLoading()) {
+                        Checking...
+                    } @else {
+                        Check Answers
+                    }
+                </button>
+            } @else {
+                <button type="button" (click)="onReset()" class="reset-btn">
+                    Try Again
+                </button>
+            }
+        </div>
+    </form>
+</section>
