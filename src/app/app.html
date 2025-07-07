@@ -1,4 +1,11 @@
 @if (showHomeButton()) {
 <button (click)="goHome()" class="home-btn">🏠 Home</button>
 }
+<div class="char-bar">
+    @for (char of specialChars; track $index) {
+    <button (click)="insertChar(char)">
+        {{ char }}
+    </button>
+    }
+</div>
 <router-outlet />
